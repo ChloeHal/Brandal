@@ -2,11 +2,15 @@
   import logo from "../assets/logo.svg";
   import { onMount } from "svelte";
   import logout from "../assets/logoutb.svg";
-  import type { Project } from './types';
+  import type { Project, Model } from './types';
   import projects from '../assets/projects.json';
+  import models from '../assets/models.json';
+  import { createEventDispatcher } from "svelte";
 
   let data: Project[] = [];
   let currentProject: Project | null = null;
+  let currentModels: Model[] = [];
+  const dispatch = createEventDispatcher();
 
   onMount(() => {
     data = projects;
@@ -14,6 +18,8 @@
 
   function showDetails(project: Project) {
     currentProject = project;
+    currentModels = models.filter((model) => project.models.includes(model.id));
+    dispatch("show-modal");
   }
 </script>
 <section class="h-screen">
@@ -65,25 +71,32 @@
       <div class="overflow-x-auto w-full">
         <table class="table w-full">    
           <thead>
-      <tr>
-        <th>Name</th>
-        <th>Client</th>
-        <th>Email</th>
-        <th></th>
-
-      </tr>
-    </thead>
-    <tbody>
-      {#each data as project}
-        <tr>
-          <td>{project.name}</td>
-          <td>{project.client}</td>
-          <td>{project.email}</td>
-            <td><label for="my-modal-4" class="btn btn-primary btn-xs">See more</label></td>
-        </tr>
-      {/each}
-    </tbody>
-  </table>
+            <tr>
+              <th>Name</th>
+              <th>Client</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each data as project}
+              <tr on:mouseover={() => showDetails(project)}>
+                <td>{project.name}</td>
+                <td>{project.client}</td>
+                <td>{project.email}</td>
+                <td><label for="my-modal-4" class="btn btn-primary btn-xs">See more</label></td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+        <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+<label for="my-modal-4" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+  </label>
+</label>
+      </div>
+    </div>
   </div>
-  </div></div>
-    </section>
+</section>
