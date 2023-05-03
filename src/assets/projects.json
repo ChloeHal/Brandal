@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Summer Vibe",
+    "client": "Zara",
+    "email": "lenmarti@gmail.com",
+    "briefing": "Nous cherchons des mannequins qui incarnent l'esprit estival et décontracté de notre collection. Les profils recherchés sont des femmes entre 18 et 30 ans, avec des silhouettes élancées et des visages expressifs. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en extérieur, sur une plage ou dans un lieu de villégiature. Nous recherchons des mannequins qui sont à l'aise devant l'objectif et qui ont une attitude positive et dynamique.",
+    "models": [1, 3]
+  },
+  {
+    "id": 2,
+    "name": "Street Style",
+    "client": "Adidas",
+    "email": "johndoe@adidas.com",
+    "briefing": "Nous cherchons des mannequins qui représentent l'univers du streetwear. Les profils recherchés sont des hommes et des femmes entre 18 et 35 ans, avec des looks urbains et tendance. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en ville, dans des rues animées ou des quartiers emblématiques. Nous recherchons des mannequins qui ont une présence forte devant l'objectif et qui peuvent incarner l'attitude cool et décontractée de la marque.",
+    "models": [1, 3]
+  },
+  {
+    "id": 3,
+    "name": "Cosy Winter",
+    "client": "H&M",
+    "email": "sarahbrown@hm.com",
+    "briefing": "Nous cherchons des mannequins qui représentent l'univers du confort et de la chaleur pour notre collection d'hiver. Les profils recherchés sont des hommes et des femmes entre 25 et 40 ans, avec un look casual et cosy. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en intérieur, dans un chalet ou une ambiance cocooning. Nous recherchons des mannequins qui ont une présence rassurante devant l'objectif et qui peuvent incarner l'esprit convivial et chaleureux de la marque.",
+    "models": [1, 3]
+  },
+  {
+    "id": 4,
+    "name": "Fitness Attitude",
+    "client": "Nike",
+    "email": "peterwilson@nike.com",
+    "briefing": "Nous cherchons des mannequins qui représentent l'univers du fitness et du sportswear. Les profils recherchés sont des hommes et des femmes entre 20 et 35 ans, avec un physique athlétique et une attitude dynamique. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en extérieur ou en salle de sport. Nous recherchons des mannequins qui ont une présence sportive et énergique devant l'objectif et qui peuvent incarner l'esprit de dépassement de soi de la marque.",
+    "models": [1, 3]
+  },
+  {
+    "id": 5,
+    "name": "Ethnic Fashion",
+    "client": "Mango",
+    "email": "marketing@mango.com",
+    "briefing": "Nous cherchons des mannequins pour une collection inspirée des cultures ethniques. Les profils recherchés sont des hommes et des femmes entre 20 et 40 ans, avec des traits marqués et une forte personnalité. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en extérieur, dans des décors inspirés de différentes cultures. Nous recherchons des mannequins qui ont une présence forte devant l'objectif et qui peuvent incarner l'authenticité et l'ouverture d'esprit de la marque.",
+    "models": [1, 3]
+  },
+  {
+    "id": 6,
+    "name": "Eco-friendly Fashion",
+    "client": "Patagonia",
+    "email": "info@patagonia.com",
+    "briefing": "Nous cherchons des mannequins pour une campagne mettant en avant notre engagement pour l'environnement. Les profils recherchés sont des hommes et des femmes entre 25 et 45 ans, avec une allure naturelle et décontractée. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en extérieur, dans des paysages naturels préservés. Nous recherchons des mannequins qui ont une présence authentique et qui peuvent incarner l'esprit éco-responsable et engagé de la marque.",
+    "models": [1, 3]
+  },
+  {
+    "id": 7,
+    "name": "Luxury Fashion",
+    "client": "Louis Vuitton",
+    "email": "casting@louisvuitton.com",
+    "briefing": "Nous cherchons des mannequins pour une campagne de haute couture. Les profils recherchés sont des femmes entre 18 et 30 ans, avec des physiques élancés et des traits fins. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en studio, dans un décor sophistiqué et élégant. Nous recherchons des mannequins qui ont une présence distinguée et qui peuvent incarner l'esprit de luxe et d'excellence de la marque.",
+    "models": [1, 3]
+  }
+]
