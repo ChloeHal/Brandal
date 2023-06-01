@@ -2,15 +2,39 @@
   import logo from "../assets/logo.svg";
   import { onMount } from "svelte";
   import logout from "../assets/logoutb.svg";
-  import type { Project, Model } from './types';
   import projects from '../assets/projects.json';
   import models from '../assets/models.json';
-  import { createEventDispatcher } from "svelte";
+
+  interface Model {
+    id: number;
+    photo: string;
+    name: string;
+    firstname: string;
+    pseudo: string;
+    age: number;
+    height: string;
+    weight: string;
+    hair: string;
+    skin: string;
+    gender: string;
+    nationality: string;
+    languages: string;
+    category: string;
+  }
+
+  interface Project {
+    id: number;
+    name: string;
+    client: string;
+    email: string;
+    briefing: string;
+    models: { id: number; status: string }[];
+  }
 
   let data: Project[] = [];
   let currentProject: Project | null = null;
   let currentModels: Model[] = [];
-  const dispatch = createEventDispatcher();
+  let isModalOpen: boolean = false;
 
   onMount(() => {
     data = projects;
@@ -18,10 +42,38 @@
 
   function showDetails(project: Project) {
     currentProject = project;
-    currentModels = models.filter((model) => project.models.includes(model.id));
-    dispatch("show-modal");
+    currentModels = project.models.map(model => {
+      const { id, status } = model;
+      return { ...models.find(m => m.id === id), status };
+    });
+    isModalOpen = true;
+  }
+
+  function getModelName(modelId: number): string {
+    const model = currentModels.find(model => model.id === modelId);
+    return model ? model.name : "";
+  }
+  function getModelStatusColor(status: string): string {
+  switch (status) {
+    case "closed":
+      return "badge-outline badge-secondary badge-md";
+    case "refuse":
+      return "badge-outline badge-error badge-md";
+    case "in casting":
+      return "badge-outline badge-accent badge-md";
+    case "accepted for casting":
+      return "badge-outline badge-warning badge-md";
+    case "accepted":
+      return "badge-outline badge-success badge-md";
+    default:
+      return "badge-outline badge-gray-500 badge-md";
+  }
+}
+  function closeModal() {
+    isModalOpen = false;
   }
 </script>
+
 <section class="h-screen">
   <div class="flex justify-end">
     <a href="/#/login">
@@ -55,48 +107,85 @@
   </div>
   <div class="divider"></div>
 
-  <div class="flex w-full mt-6 pl-4 mr-4">
-    <div class="grid w-2/5 h-96 flex-grow card place-items-center">
-      {#if currentProject !== null}
-        
-        <p>{currentProject.briefing}</p>
-        {:else}
-        <p>Please select a project to view its details.</p>
-      {/if}
-    </div> 
-    <div class="divider divider-horizontal"></div>
+ 
 
-    <div class="grid flex-grow card w-3/5 place-items-start ml-4 pb-24 h-[29rem] overflow-auto ">
+  <div class="h-96 overflow-auto px-8">
+    <table class="table table-zebra w-full">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Client</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each data as project}
+          <tr>
+            <td>{project.id}</td>
+            <td>{project.name}</td>
+            <td>{project.client}</td>
+            <td>{project.email}</td>
+            <td>
+              <button on:click={() => showDetails(project)}><label for="my-modal-4" class="btn btn-primary btn-xs">See more</label></button>
 
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">    
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Client</th>
-              <th>Email</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each data as project}
-              <tr on:mouseover={() => showDetails(project)}>
-                <td>{project.name}</td>
-                <td>{project.client}</td>
-                <td>{project.email}</td>
-                <td><label for="my-modal-4" class="btn btn-primary btn-xs">See more</label></td>
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-        <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-<label for="my-modal-4" class="modal cursor-pointer">
-  <label class="modal-box relative" for="">
-    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-  </label>
-</label>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
+  <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+<label for="my-modal-4" class="modal cursor-pointer ">
+
+      <div class="modal-box relative rounded-none w-10/12 h-3/4 max-w-5xl">
+        <label for="my-modal-7" class="btn btn-sm btn-circle btn-primary absolute right-4 top-4">x</label>
+        <div class="fixed inset-0 flex items-start justify-center z-50">
+          <div class="modal-body m-10">
+            {#if currentProject !== null}
+              <h3 class=" font-cy text-4xl font-bold pt-4">{currentProject.name}</h3>
+              <p class=" font-cy text-l py-2">{currentProject.client} - {currentProject.email}</p>
+              
+              <p class=" py-2">{currentProject.briefing}</p>
+            {:else}
+              <p>Select a project for more details.</p>
+            {/if}
+            <div class="overflow-x-auto">
+              <table class="table table-compact mx-12 mt-8">
+                <thead>
+                  <tr>
+                    <th class="w-1/4">Photo</th>
+                    <th class="w-1/4">Name</th>
+                    <th class="w-1/4">Firstname</th>
+                    <th class="w-1/4">Age</th>
+                    <th class="w-1/4">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {#each currentModels as model}
+                    <tr>
+                      <td class="px-4 py-2">
+                        <img src={model.photo} class="w-12 mask mask-squircle" alt="">
+                      </td>
+                      <td class="px-4 py-2">{model.name}</td>
+                      <td class="px-4 py-2">{model.firstname}</td>
+                      <td class="px-4 py-2">{model.age}</td>
+                      <td class="px-4 py-2"> 
+                        <div class={"badge " + getModelStatusColor(model.status)}>{model.status}
+                        </div>
+                        
+                      </td>
+                    </tr>
+                  {/each}
+                </tbody>
+              </table>
+            </div>
+          </div>
       </div>
     </div>
-  </div>
+</label>
+
+
+
 </section>

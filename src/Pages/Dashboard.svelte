@@ -1,90 +1,144 @@
 <script lang="ts">
-    import { onMount, createEventDispatcher } from "svelte";
-    import logo from "../assets/logo.svg";
-      import logout from "../assets/logoutb.svg"
+  import { onMount, createEventDispatcher } from "svelte";
+  import logo from "../assets/logo.svg";
+  import logout from "../assets/logoutb.svg";
 
-    interface Row {
-      id: number;
-      photo: string;
-      name: string;
-      firstname:string,
-      age: number;
-      height: string;
-      weight: string;
-      hair: string;
-      skin: string;
-      gender: string;
-      nationality: string;
-      languages: string;
-      category: string;
-    }
-  
-    interface Column {
-      title: string;
-      visible: boolean;
-    }
-  
-    const dispatch = createEventDispatcher();
-  
-    let columns: Column[] = [
-      { title: "Photo", visible: true },
-      { title: "Name", visible: true },
-      { title: "FirstName", visible: true },
-      { title: "Age", visible: true },
-      { title: "Height", visible: true },
-      { title: "Weight", visible: true },
-      { title: "Hair", visible: true },
-      { title: "Skin", visible: true },
-      { title: "Gender", visible: true },
-      { title: "Nationality", visible: true },
-      { title: "Languages", visible: true },
-      { title: "Category", visible: true }
-    ];
-  
-    let data: Row[] = [];
-    interface Project {
+  interface Row {
     id: number;
+    photo: string;
     name: string;
-    client: string;
-    email: string;
-    briefing: string;
+    firstname:string,
+    age: number;
+    height: string;
+    weight: string;
+    hair: string;
+    skin: string;
+    gender: string;
+    nationality: string;
+    languages: string;
+    category: string;
   }
-  let selectedProject: string;
 
+  interface Column {
+    title: string;
+    visible: boolean;
+  }
+
+  const dispatch = createEventDispatcher();
+
+  let columns: Column[] = [
+    { title: "Photo", visible: true },
+    { title: "Name", visible: true },
+    { title: "FirstName", visible: true },
+    { title: "Age", visible: true },
+    { title: "Height", visible: true },
+    { title: "Weight", visible: true },
+    { title: "Hair", visible: true },
+    { title: "Skin", visible: true },
+    { title: "Gender", visible: true },
+    { title: "Nationality", visible: true },
+    { title: "Languages", visible: true },
+    { title: "Category", visible: true }
+  ];
+
+  let unfilteredData: Row[] = [];
+  let data: Row[] = [];
+
+  interface Project {
+      id: number;
+      name: string;
+      client: string;
+      email: string;
+      briefing: string;
+  }
+
+  let filters = {
+      gender: '',
+      language: '',
+      hair: '',
+      category: '',
+      nationality: '',
+      height: '',
+      age: '',
+      weight: ''
+  };
+
+  let selectedProject: string;
   let projects: Project[] = [];
+  let showAlert: boolean = false;
+
   onMount(async () => {
-    const response = await fetch('./src/assets/projects.json');
-    projects = await response.json();
-    let selectedProject: string = '';
+      const response = await fetch('./src/assets/projects.json');
+      projects = await response.json();
+      let selectedProject: string = '';
   })
-function validate(): void {
-  // Do something with the selected project
-  console.log(selectedProject);
-}
- 
+
   onMount(async () => {
-    const res = await fetch('./src/assets/models.json');
-    data = await res.json();
+      const res = await fetch('./src/assets/models.json');
+      const jsonData = await res.json();
+      unfilteredData = [...jsonData];
+      data = [...jsonData];
   });
-  
-  
-    let filteredColumns = columns.filter(col => col.visible);
-  
-    onMount(() => {
+
+  function filterData() {
+      data = unfilteredData.filter((row: Row) =>
+          (!filters.gender || row.gender === filters.gender) &&
+          (!filters.language || row.languages.includes(filters.language)) &&
+          (!filters.hair || row.hair === filters.hair) &&
+          (!filters.category || row.category === filters.category) &&
+          (!filters.nationality || row.nationality === filters.nationality) &&
+          (!filters.height || row.height === filters.height) &&
+          (!filters.age || row.age === filters.age) &&
+          (!filters.weight || row.weight === filters.weight)
+      );
+  }
+  function resetFilters() {
+    filters = {
+        gender: '',
+        language: '',
+        hair: '',
+        category: '',
+        nationality: '',
+        height: '',
+        age: '',
+        weight: ''
+    };
+    data = [...unfilteredData];
+}
+
+function validate(): void {
+    if (selectedProject && hoveredRow) {
+      const message = `La sélection a bien été ajoutée au projet "${selectedProject}".`;
+      showAlert = true;
+
+      // Masquer l'alerte après 2 secondes
+      setTimeout(() => {
+        showAlert = false;
+      }, 4000);
+
+      console.log(message);
+    }
+  }
+
+  let filteredColumns = columns.filter(col => col.visible);
+
+  onMount(() => {
       columns.forEach(col => col.visible = true);
-    });
-  
-    function toggleColumn(index) {
+  });
+
+  function toggleColumn(index) {
       columns[index].visible = !columns[index].visible;
       filteredColumns = columns.filter(col => col.visible);
-    }
-    let hoveredRow;
-  
-    function handleRowHover(row) {
+  }
+
+  let hoveredRow;
+
+  function handleRowHover(row) {
       hoveredRow = row;
       dispatch('hoveredRow', hoveredRow);
-    }
-  </script>
+  }
+</script>
+
   <section class="h-screen ">
     <div class="flex justify-end">
       <a href="/#/login">
@@ -114,9 +168,14 @@ function validate(): void {
             <option value={project.name}>{project.name}</option>
           {/each}
         </select>
-        <button class="btn rounded-none text-sm font-cy normal-case mx-4" on:click={validate}>Add selection</button>
+        {#if showAlert}
+      <div class="bg-green-500 text-white px-4 py-2 rounded-md ml-4 fixed bottom-4 right-4 z-10">
+        La sélection a bien été ajoutée au projet "{selectedProject}".
       </div>
+      {/if}
+      <button class="btn rounded-none text-sm font-cy normal-case mx-4" on:click={validate}>Add selection</button>
     </div>
+  </div>
     <!-- Modal 1 -->
     <input type="checkbox" id="my-modal-1" class="modal-toggle" />
     <div class="modal">
@@ -134,13 +193,85 @@ function validate(): void {
     </div>
   </div>
   <!-- Modal 2 -->
-  <input type="checkbox" id="my-modal-2" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-box relative  rounded-none">
-      <label for="my-modal-2" class="btn btn-sm btn-circle btn-primary absolute right-4 top-4">✕</label>
-      hello
-    </div>
+<input type="checkbox" id="my-modal-2" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative  rounded-none">
+    <label for="my-modal-2" class="btn btn-sm btn-circle btn-primary absolute right-4 top-4">✕</label>
+    <form on:submit|preventDefault={filterData}>
+      <div>
+        <label for="filter-gender">Gender:</label>
+        <select class="select select-bordered w-full max-w-xs mb-2" id="filter-gender" bind:value={filters.gender}>
+          <option value="">All</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+
+        </select>
+      </div>
+      <div>
+        <label for="filter-language">Language:</label>
+        <select class="select select-bordered w-full max-w-xs mb-2" id="filter-language" bind:value={filters.language}>
+          <option value="">All</option>
+          <option value="English">English</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Mandarin">Mandarin</option>
+          <option value="Portuguese">Portuguese</option>
+          <option value="Punjabi">Punjabi</option>
+          <option value="Korean">Korean</option>
+          <option value="Hindi">Hindi</option>
+
+          <!-- Add other options as needed -->
+        </select>
+      </div>
+      <div>
+        <label for="filter-hair">Hair:</label>
+        <select class="select select-bordered w-full max-w-xs mb-2" id="filter-hair" bind:value={filters.hair}>
+          <option value="">All</option>
+          <option value="Black">Black</option>
+          <option value="Brown">Brown</option>
+          <option value="Blonde">Blonde</option>
+          <option value="Red">Red</option>
+          <option value="Gray">Gray</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      
+
+      <!-- Add more fields as needed -->
+      <div>
+        <label for="filter-category">Category:</label>
+        <select class="select select-bordered w-full max-w-xs mb-2" id="filter-category" bind:value={filters.category}>
+          <option value="">All</option>
+          <option value="Runway">Runway</option>
+          <option value="Fashion model">Fashion model</option>
+          <option value="Muscle">Muscle</option>
+          <option value="Fitness model">Fitness model</option>
+          <option value="Beauty">Beauty</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Editorial">Editorial</option>
+          <option value="Casual">Casual</option>
+          <option value="Catalog">Catalog</option>
+          <option value="High Fashion">High Fashion</option>
+          <option value="Print">Print</option>
+          <option value="Catalog">Catalog</option>
+          <option value="TV">TV</option>
+          <option value="Digital">Digital</option>
+
+          <!-- Add other options as needed -->
+        </select>
+      </div>
+     
+    
+      <button class="btn btn-primary" type="submit">Apply filter</button>
+      <button class="btn btn-ghost" on:click={resetFilters}>Reset filter</button>
+
+
+    </form>
   </div>
+</div>
+
   
   <div class="divider"></div>
   
@@ -198,55 +329,56 @@ function validate(): void {
           </table>
 
           <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-          <label for="my-modal-4" class="modal cursor-pointer ">
-            <label class="modal-box " for="">
+<label for="my-modal-4" class="modal cursor-pointer ">
+  <label class="modal-box" for="">
+    <div class="flex flex-col items-center">
+      <div class="avatar">
+        <div class="w-64">
+          <img src={hoveredRow?.photo} alt={hoveredRow?.name} class="" />
+        </div>
+      </div>
+      <h4 class="font-cy text-4xl font-bold">{hoveredRow?.name}</h4>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <div class="mb-4">
+            <p>Age: {hoveredRow?.age}</p>
+          </div>
+          <div class="mb-4">
+            <p>Height: {hoveredRow?.height}</p>
+          </div>
+          <div class="mb-4">
+            <p>Weight: {hoveredRow?.weight}</p>
+          </div>
+          <div class="mb-4">
+            <p>Hair: {hoveredRow?.hair}</p>
+          </div>
+          <div class="mb-4">
+            <p>Skin: {hoveredRow?.skin}</p>
+          </div>
+        </div>
+        <div>
+          <div class="mb-4">
+            <p>Gender: {hoveredRow?.gender}</p>
+          </div>
+          <div class="mb-4">
+            <p>Nationality: {hoveredRow?.nationality}</p>
+          </div>
+          <div class="mb-4">
+            <p>Languages: {hoveredRow?.languages}</p>
+          </div>
+          <div class="mb-4">
+            <!-- Add any additional fields as needed -->
+          </div>
+          <div>
+            <p>Category: {hoveredRow?.category}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </label>
+</label>
 
-                <div class="flex flex-col items-center">
-                  <div class="avatar">
-                    <div class="w-64">
-                      <img src="../src/assets/models/model1.png" alt="Lena" class=""/>
-                    </div>
-                  </div>
-                  <h4 class="font-cy text-4xl font-bold">Lena Gomez</h4>
-                  <div class="grid grid-cols-2 gap-4">
-                    <div>
-                      <div class="mb-4">
-                        <p>Age:28</p>
-                      </div>
-                      <div class="mb-4">
-                        <p>Height: 170cm</p>
-                      </div>
-                      <div class="mb-4">
-                        <p>Weight: 55kg</p>
-                      </div>
-                      <div class="mb-4">
-                        <p>Hair: Black</p>
-                      </div>
-                      <div class="mb-4">
-                        <p> Skin:Tan</p>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="mb-4">
-                        <p>Gender: Female</p>
-                      </div>
-                      <div class="mb-4">
-                        <p>Nationality: Mexican</p>
-                      </div>
-                      <div class="mb-4">
-                        <p>Languages: English, Spanish</p>
-                      </div>
-                      <div class="mb-4">
-                      </div>
-                      <div>
-                        <p>Category: Runway, Fashion model</p>
-                      </div>
-                    </div>
-                  </div>
                   
-                  
-            </label>
-          </label>
 
 
         </div>

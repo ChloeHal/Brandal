@@ -125,8 +125,7 @@
     "gender": "Male",
     "nationality": "South Korean",
     "languages": "Korean, Mandarin",
-    "type": "Catalog",
-    "category": "Casual"
+    "category": "Casual, Catalog"
   },
   {
     "id": 9,
@@ -158,8 +157,7 @@
     "gender": "Female",
     "nationality": "Indian",
     "languages": "English, Hindi",
-    "type": "Fashion",
-    "category": "Runway"
+    "category": "Runway, Fashion"
   },
   {
     "id": 11,
@@ -175,8 +173,7 @@
     "gender": "Male",
     "nationality": "South Korean",
     "languages": "Korean, English",
-    "type": "Commercial",
-    "category": "Print"
+    "category": "Print, Commercial"
   },
   {
     "id": 12,
@@ -192,8 +189,7 @@
     "gender": "Female",
     "nationality": "Brazilian",
     "languages": "Portuguese, Spanish",
-    "type": "Fitness",
-    "category": "Catalog"
+    "category": "Catalog, Fitness"
   },
   {
     "id": 13,
@@ -209,8 +205,7 @@
     "gender": "Male",
     "nationality": "American",
     "languages": "English, Korean",
-    "type": "High Fashion",
-    "category": "Editorial"
+    "category": "Editorial, High Fashion"
   },
   {
     "id": 14,
@@ -226,8 +221,7 @@
     "gender": "Female",
     "nationality": "Japanese",
     "languages": "Japanese, English",
-    "type": "Commercial",
-    "category": "TV"
+    "category": "TV, Commercial"
   },
   {
     "id": 15,
@@ -243,8 +237,7 @@
     "gender": "Male",
     "nationality": "British",
     "languages": "English",
-    "type": "Fashion",
-    "category": "Print"
+    "category": "Print, Fashion"
   },
   {
     "id": 16,
@@ -260,8 +253,7 @@
     "gender": "Female",
     "nationality": "Chinese",
     "languages": "Mandarin, English",
-    "type": "Runway",
-    "category": "Haute Couture"
+    "category": "High Fashion, Runway"
   },
   {
     "id": 17,
@@ -277,8 +269,7 @@
     "gender": "Male",
     "nationality": "Mexican",
     "languages": "Spanish, English",
-    "type": "Commercial",
-    "category": "Print"
+    "category": "Print, Commercial"
   },
   {
     "id": 18,
@@ -294,8 +285,7 @@
     "gender": "Female",
     "nationality": "Brazilian",
     "languages": "Portuguese, English",
-    "type": "Fashion",
-    "category": "Runway"
+    "category": "Runway, Fashion"
   },
   {
     "id": 19,
@@ -311,8 +301,7 @@
     "gender": "Male",
     "nationality": "Japanese",
     "languages": "Japanese, English",
-    "type": "Commercial",
-    "category": "TV"
+    "category": "TV, Commercial"
   },
   {
     "id": 20,
@@ -328,8 +317,7 @@
     "gender": "Female",
     "nationality": "French",
     "languages": "French, English",
-    "type": "Fashion",
-    "category": "Editorial"
+    "category": "Editorial, Fashion"
   },
   {
     "id": 21,
@@ -345,8 +333,7 @@
     "gender": "Male",
     "nationality": "Spanish",
     "languages": "Spanish, English",
-    "type": "Commercial",
-    "category": "Digital"
+    "category": "Digital, Commercial"
   },
   {
     "id": 22,
@@ -362,7 +349,6 @@
     "gender": "Female",
     "nationality": "South Korean",
     "languages": "Korean, English",
-    "type": "Runway",
-    "category": "Digital"
+    "category": "Runway, Digital"
   }
 ]

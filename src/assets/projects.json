@@ -13,6 +13,18 @@
       {
         "id": 3,
         "status": "in casting"
+      },
+      {
+        "id": 12,
+        "status": "refuse"
+      },
+      {
+        "id": 6,
+        "status": "in casting"
+      },
+      {
+        "id": 16,
+        "status": "accepted"
       }
     ]
   },
@@ -24,12 +36,24 @@
     "briefing": "Nous cherchons des mannequins qui représentent l'univers du streetwear. Les profils recherchés sont des hommes et des femmes entre 18 et 35 ans, avec des looks urbains et tendance. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en ville, dans des rues animées ou des quartiers emblématiques. Nous recherchons des mannequins qui ont une présence forte devant l'objectif et qui peuvent incarner l'attitude cool et décontractée de la marque.",
     "models": [
       {
-        "id": 1,
+        "id": 2,
         "status": "refuse"
       },
       {
-        "id": 3,
+        "id": 6,
         "status": "in casting"
+      },
+      {
+        "id": 6,
+        "status": "accepted"
+      },
+      {
+        "id": 1,
+        "status": "closed"
+      },
+      {
+        "id": 3,
+        "status": "accepted in casting"
       }
     ]
   },
@@ -47,6 +71,18 @@
       {
         "id": 3,
         "status": "refuse"
+      },
+      {
+        "id": 6,
+        "status": "in casting"
+      },
+      {
+        "id": 7,
+        "status": "accepted"
+      },
+      {
+        "id": 10,
+        "status": "closed"
       }
     ]
   },
@@ -58,8 +94,20 @@
     "briefing": "Nous cherchons des mannequins qui représentent l'univers du fitness et du sportswear. Les profils recherchés sont des hommes et des femmes entre 20 et 35 ans, avec un physique athlétique et une attitude dynamique. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en extérieur ou en salle de sport. Nous recherchons des mannequins qui ont une présence sportive et énergique devant l'objectif et qui peuvent incarner l'esprit de dépassement de soi de la marque.",
     "models": [
       {
-        "id": 1,
+        "id": 11,
         "status": "accepted for casting"
+      },
+      {
+        "id": 6,
+        "status": "in casting"
+      },
+      {
+        "id": 7,
+        "status": "accepted"
+      },
+      {
+        "id": 10,
+        "status": "closed"
       },
       {
         "id": 3,
@@ -75,12 +123,28 @@
     "briefing": "Nous cherchons des mannequins pour une collection inspirée des cultures ethniques. Les profils recherchés sont des hommes et des femmes entre 20 et 40 ans, avec des traits marqués et une forte personnalité. Nous sommes ouverts à la diversité et nous encourageons la représentation de différentes origines et morphologies. Les mannequins sélectionnés participeront à une séance photo en extérieur, dans des décors inspirés de différentes cultures. Nous recherchons des mannequins qui ont une présence forte devant l'objectif et qui peuvent incarner l'authenticité et l'ouverture d'esprit de la marque.",
     "models": [
       {
-        "id": 1,
+        "id": 18,
         "status": "refuse"
       },
       {
         "id": 3,
         "status": "in casting"
+      },
+      {
+        "id": 6,
+        "status": "in casting"
+      },
+      {
+        "id": 16,
+        "status": "accepted"
+      },
+      {
+        "id": 1,
+        "status": "closed"
+      },
+      {
+        "id": 3,
+        "status": "accepted in casting"
       }
     ]
   },
@@ -114,6 +178,193 @@
       },
       {
         "id": 3,
+        "status": "closed"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Glamorous Evening",
+    "client": "Dior",
+    "email": "casting@dior.com",
+    "briefing": "We are looking for models for an elegant evening collection. The desired profiles are women between 18 and 35 years old, with a sophisticated and glamorous look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in a luxurious setting or a prestigious event. We are looking for models who have a captivating presence and can embody the elegance and allure of the brand.",
+    "models": [
+      {
+        "id": 2,
+        "status": "in casting"
+      },
+      {
+        "id": 4,
+        "status": "accepted"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Casual Chic",
+    "client": "Hugo Boss",
+    "email": "info@hugoboss.com",
+    "briefing": "We are looking for models to represent our casual chic collection. The desired profiles are men and women between 25 and 40 years old, with a refined and relaxed style. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in a trendy urban setting. We are looking for models who have a natural and effortless presence in front of the camera and can embody the modern and sophisticated spirit of the brand.",
+    "models": [
+      {
+        "id": 1,
+        "status": "in casting"
+      },
+      {
+        "id": 5,
+        "status": "closed"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Active Lifestyle",
+    "client": "Under Armour",
+    "email": "casting@underarmour.com",
+    "briefing": "We are looking for models who represent the active and sporty lifestyle for our performance wear collection. The desired profiles are men and women between 20 and 35 years old, with a fit and athletic physique. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in outdoor or sports settings. We are looking for models who have a strong and energetic presence in front of the camera and can embody the determination and resilience of the brand.",
+    "models": [
+      {
+        "id": 2,
+        "status": "accepted for casting"
+      },
+      {
+        "id": 3,
+        "status": "in casting"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Vintage Vibes",
+    "client": "Retro Fashion",
+    "email": "marketing@retrofashion.com",
+    "briefing": "We are looking for models for a vintage-inspired fashion collection. The desired profiles are men and women between 18 and 40 years old, with a retro and nostalgic look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in vintage settings or with retro props. We are looking for models who have a unique and expressive presence in front of the camera and can embody the timeless charm and style of the brand.",
+    "models": [
+      {
+        "id": 4,
+        "status": "accepted"
+      },
+      {
+        "id": 5,
+        "status": "closed"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Urban Explorers",
+    "client": "Puma",
+    "email": "info@puma.com",
+    "briefing": "We are looking for models who embody the spirit of urban exploration for our urban fashion collection. The desired profiles are men and women between 18 and 30 years old, with a street style and adventurous look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in urban settings or iconic city locations. We are looking for models who have a confident and edgy presence in front of the camera and can embody the urban attitude and energy of the brand.",
+    "models": [
+      {
+        "id": 1,
+        "status": "in casting"
+      },
+      {
+        "id": 6,
+        "status": "closed"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Bohemian Vibes",
+    "client": "Free People",
+    "email": "casting@freepeople.com",
+    "briefing": "We are looking for models to represent the bohemian and free-spirited style of our fashion collection. The desired profiles are women between 20 and 35 years old, with a boho-chic and ethereal look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in natural or bohemian-inspired settings. We are looking for models who have a dreamy and enchanting presence in front of the camera and can embody the carefree and whimsical spirit of the brand.",
+    "models": [
+      {
+        "id": 2,
+        "status": "accepted"
+      },
+      {
+        "id": 4,
+        "status": "closed"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Minimalist Style",
+    "client": "Acne Studios",
+    "email": "casting@acnestudios.com",
+    "briefing": "We are looking for models to represent the minimalist and clean aesthetic of our fashion collection. The desired profiles are men and women between 25 and 40 years old, with a sleek and modern look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in a minimalist setting or with clean lines. We are looking for models who have a sophisticated and understated presence in front of the camera and can embody the simplicity and refinement of the brand.",
+    "models": [
+      {
+        "id": 3,
+        "status": "accepted"
+      },
+      {
+        "id": 5,
+        "status": "closed"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Artistic Expressions",
+    "client": "Gucci",
+    "email": "info@gucci.com",
+    "briefing": "We are looking for models who can express artistic and creative personalities for our fashion collection. The desired profiles are men and women between 18 and 35 years old, with unique and unconventional looks. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in artistic or avant-garde settings. We are looking for models who have a bold and expressive presence in front of the camera and can embody the artistic and eclectic spirit of the brand.",
+    "models": [
+      {
+        "id": 1,
+        "status": "closed"
+      },
+      {
+        "id": 6,
+        "status": "in casting"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Sophisticated Elegance",
+    "client": "Chanel",
+    "email": "casting@chanel.com",
+    "briefing": "We are looking for models to represent the timeless and sophisticated elegance of our fashion collection. The desired profiles are women between 18 and 30 years old, with graceful and refined looks. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in a luxurious setting or a grand event. We are looking for models who have a poised and graceful presence in front of the camera and can embody the timeless beauty and elegance of the brand.",
+    "models": [
+      {
+        "id": 2,
+        "status": "in casting"
+      },
+      {
+        "id": 3,
+        "status": "accepted"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Techwear",
+    "client": "Nike",
+    "email": "casting@nike.com",
+    "briefing": "We are looking for models to represent the futuristic and innovative style of our techwear collection. The desired profiles are men and women between 20 and 35 years old, with a tech-savvy and urban look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in high-tech or urban settings. We are looking for models who have a confident and dynamic presence in front of the camera and can embody the cutting-edge and performance-driven spirit of the brand.",
+    "models": [
+      {
+        "id": 4,
+        "status": "in casting"
+      },
+      {
+        "id": 5,
+        "status": "accepted"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Red Carpet Glam",
+    "client": "Versace",
+    "email": "info@versace.com",
+    "briefing": "We are looking for models to represent the glamour and allure of our red carpet fashion collection. The desired profiles are women between 18 and 35 years old, with a striking and glamorous look. We are open to diversity and encourage the representation of different origins and body types. The selected models will participate in a photo shoot in a luxurious setting or a prestigious event. We are looking for models who have a captivating and glamorous presence in front of the camera and can embody the confidence and sophistication of the brand.",
+    "models": [
+      {
+        "id": 1,
+        "status": "accepted"
+      },
+      {
+        "id": 6,
         "status": "closed"
       }
     ]
